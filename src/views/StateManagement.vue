@@ -7,22 +7,27 @@ const store = useStockStore()
 <template>
   <div>
     <p class="pb-3">Stock Management With Pinia</p>
-    <table class="w-full table-auto rounded-lg overflow-hidden">
-      <!-- table Head -->
-      <tr class="bg-gray-300">
-        <td class="px-5 py-2 border-gray-500 border font-semibold">NAME</td>
-        <td class="px-5 py-2 border-gray-500 border font-semibold">QUANTITY</td>
-        <td class="px-5 py-2 border-gray-500 border font-semibold">ACTION</td>
-      </tr>
-      <!-- table Data -->
-      <tr class="bg-gray-200" v-for="(stock, index) in store.stock_list" :key="index">
-        <td class="px-5 py-2 border-gray-500 border">{{ stock.name }}</td>
-        <td class="px-5 py-2 border-gray-500 border">{{ stock.qty }}</td>
-        <td class="px-5 py-2 border-gray-500 border">
-          <ButtonPrimary @click="store.decreaseStock(index)" class="mr-2"> - </ButtonPrimary>
-          <ButtonPrimary @click="store.increaseStock(index)"> + </ButtonPrimary>
-        </td>
-      </tr>
-    </table>
+    <div class="border rounded-lg">
+      <table class="w-full table-auto">
+        <!-- table Head -->
+        <tr class="bg--gray-100 border-b">
+          <td class="px-5 py-2 font-semibold">NAME</td>
+          <td class="px-5 py-2 font-semibold">QUANTITY</td>
+          <td class="px-5 py-2 font-semibold ">ACTION</td>
+        </tr>
+        <!-- table Data -->
+        <tbody class="divide-y">
+          <tr class="hover:bg-gray-100"
+            v-for="(stock, index) in store.stock_list" :key="index">
+            <td class="px-5 py-2">{{ stock.name }}</td>
+            <td class="px-5 py-2">{{ stock.qty }}</td>
+            <td class="px-5 py-2">
+              <ButtonPrimary @click="store.decreaseStock(index)" class="mr-2"> - </ButtonPrimary>
+              <ButtonPrimary @click="store.increaseStock(index)"> + </ButtonPrimary>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </div>
 </template>

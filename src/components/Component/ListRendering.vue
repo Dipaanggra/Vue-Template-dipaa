@@ -29,11 +29,12 @@ const todo_list = ref([
   <div>
     <ul>
       <li
-        class="flex gap-2 items-center mb-2 bg-white p-2 rounded-lg"
+        class="flex gap-2 items-center mb-2 bg-white border hover:bg-gray-100 px-4 py-2 rounded-lg"
         v-for="(todo, index) in todo_list"
         :key="index"
       >
         <input
+        class="rounded"
           type="checkbox"
           :name="`todo-${index}`"
           :id="`todo-${index}`"
